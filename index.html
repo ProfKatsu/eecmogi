@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EEC - Mogi das Cruzes</title>
+    <style>
+        /* Paleta de Cores e Variáveis */
+        :root {
+            --roxo-escuro: #39274f;
+            --azul-acinzentado: #8996b6;
+            --rosa-choque: #ee3392;
+            --amarelo-destaque: #f8c638;
+            --branco: #ffffff;
+            --fundo-claro: #f4f5f7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--fundo-claro);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho e Navegação */
+        header {
+            background-color: var(--roxo-escuro);
+            color: var(--branco);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container img {
+            height: 60px; /* Ajuste conforme necessário */
+        }
+
+        .logo-container h1 {
+            font-size: 1.2rem;
+            color: var(--branco);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--branco);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--amarelo-destaque);
+        }
+
+        /* Seção Home / Banner */
+        #home {
+            background: linear-gradient(135deg, var(--roxo-escuro) 0%, var(--azul-acinzentado) 100%);
+            color: var(--branco);
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        #home h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--amarelo-destaque);
+        }
+
+        .aviso-urgente {
+            background-color: var(--rosa-choque);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Estrutura Geral das Seções */
+        section {
+            padding: 60px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--roxo-escuro);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--rosa-choque);
+            margin: 10px auto 0;
+        }
+
+        /* Quem Somos */
+        .sobre-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        /* Equipe */
+        .equipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .membro-card {
+            background: var(--branco);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-bottom: 5px solid var(--azul-acinzentado);
+            transition: transform 0.3s;
+        }
+
+        .membro-card:hover {
+            transform: translateY(-5px);
+            border-bottom-color: var(--rosa-choque);
+        }
+
+        .foto-placeholder {
+            width: 120px;
+            height: 120px;
+            background-color: var(--fundo-claro);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            border: 3px solid var(--amarelo-destaque);
+        }
+
+        /* Materiais e Painéis */
+        .paineis-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .painel-card {
+            background: var(--branco);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--roxo-escuro);
+        }
+
+        .painel-card h3 {
+            color: var(--roxo-escuro);
+            margin-bottom: 15px;
+        }
+
+        .painel-card .destaque-dado {
+            font-size: 1.2rem;
+            color: var(--rosa-choque);
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: var(--roxo-escuro);
+            color: var(--branco);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--amarelo-destaque);
+            color: var(--roxo-escuro);
+        }
+
+        /* Contato e Rodapé */
+        footer {
+            background-color: var(--roxo-escuro);
+            color: var(--branco);
+            padding: 40px 5% 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-grid h3 {
+            color: var(--amarelo-destaque);
+            margin-bottom: 15px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .sobre-grid, .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                display: none; /* Em um projeto real, adicionaríamos um menu hamburguer aqui */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="eec trans.jpg" alt="Logo EEC Mogi das Cruzes">
+            <h1>EEC Mogi das Cruzes</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#quem-somos">Quem Somos</a></li>
+                <li><a href="#equipe">A Equipe</a></li>
+                <li><a href="#paineis">Materiais e Painéis</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h2>Apoio Pedagógico e Formação Contínua</h2>
+        <p>A Equipe de Especialistas em Currículo da Unidade Regional de Ensino de Mogi das Cruzes trabalhando junto com as escolas para a excelência na educação.</p>
+        <div class="aviso-urgente">
+            Aviso: Período de preenchimento dos instrumentais prorrogado!
+        </div>
+    </section>
+
+    <section id="quem-somos">
+        <h2 class="section-title">Quem Somos</h2>
+        <div class="sobre-grid">
+            <div>
+                <h3>Nossos Objetivos</h3>
+                <p>A EEC atua diretamente no suporte pedagógico às unidades escolares, promovendo a articulação do currículo paulista, oferecendo formações para os docentes e CGPGs, e acompanhando os indicadores de aprendizagem para propor intervenções assertivas.</p>
+                <br>
+                <h3>Frentes de Atuação</h3>
+                <ul>
+                    <li>Formação continuada de professores e gestores.</li>
+                    <li>Acompanhamento de resultados e busca ativa.</li>
+                    <li>Desenvolvimento e curadoria de materiais didáticos.</li>
+                </ul>
+            </div>
+            <div>
+                <div style="background-color: var(--azul-acinzentado); height: 250px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white;">
+                    [Imagem Ilustrativa / Foto da Equipe]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="equipe">
+        <h2 class="section-title">A Equipe</h2>
+        <div class="equipe-grid">
+            <div class="membro-card">
+                <div class="foto-placeholder"></div>
+                <h3>Nome do Especialista</h3>
+                <p style="color: var(--rosa-choque); font-weight: bold;">Linguagens</p>
+                <p style="font-size: 0.9rem; margin-top: 10px;">Especialista em Língua Portuguesa e Tecnologias.</p>
+            </div>
+            <div class="membro-card">
+                <div class="foto-placeholder"></div>
+                <h3>Nome do Especialista</h3>
+                <p style="color: var(--rosa-choque); font-weight: bold;">Matemática</p>
+                <p style="font-size: 0.9rem; margin-top: 10px;">Acompanhamento de simulados e Prova Paulista.</p>
+            </div>
+            <div class="membro-card">
+                <div class="foto-placeholder"></div>
+                <h3>Nome do Especialista</h3>
+                <p style="color: var(--rosa-choque); font-weight: bold;">Ciências da Natureza</p>
+                <p style="font-size: 0.9rem; margin-top: 10px;">Projetos científicos e laboratórios.</p>
+            </div>
+            <div class="membro-card">
+                <div class="foto-placeholder"></div>
+                <h3>Nome do Especialista</h3>
+                <p style="color: var(--rosa-choque); font-weight: bold;">Ciências Humanas</p>
+                <p style="font-size: 0.9rem; margin-top: 10px;">História, Geografia e atualidades.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="paineis" style="background-color: #e9ecef;">
+        <h2 class="section-title">Materiais e Painéis</h2>
+        <div class="paineis-container">
+            <div class="painel-card">
+                <h3>Repositório de Materiais</h3>
+                <p>Acesse documentos orientadores, roteiros de formação, pautas de ATPC e diretrizes do Pacto.</p>
+                <a href="#" class="btn">Acessar Drive</a>
+            </div>
+            <div class="painel-card">
+                <h3>Resultados - Prova Paulista</h3>
+                <p>Acompanhe o desempenho e o engajamento da nossa regional para guiar o plano de ação nas escolas.</p>
+                <span class="destaque-dado">1º Bimestre 2026: 93,9% de Participação (50% Acertos)</span>
+                <span class="destaque-dado" style="font-size: 0.9rem; color: var(--azul-acinzentado);">Histórico 2025: 92,1% Participação (46,1% Acertos)</span>
+                <a href="#" class="btn">Abrir Painel BI</a>
+            </div>
+            <div class="painel-card">
+                <h3>Indicadores SAEB</h3>
+                <p>Mapeamento das proficiências e séries históricas para planejamento do redimensionamento pedagógico.</p>
+                <a href="#" class="btn">Ver Indicadores</a>
+            </div>
+            <div class="painel-card">
+                <h3>Agenda de Formações</h3>
+                <p>Calendário integrado com encontros de CGPGs, transmissões CMSP e reuniões de alinhamento.</p>
+                <a href="#" class="btn">Ver Calendário</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <div class="footer-grid">
+            <div>
+                <h3>Fale com a EEC</h3>
+                <p><strong>Endereço:</strong> Unidade Regional de Ensino de Mogi das Cruzes</p>
+                <p><strong>E-mail:</strong> eec.mogi@educacao.sp.gov.br (exemplo)</p>
+                <p><strong>Telefone:</strong> (11) XXXX-XXXX</p>
+            </div>
+            <div>
+                <h3>Dúvidas Rápidas?</h3>
+                <p>Envie sua solicitação diretamente para nossa equipe de atendimento pedagógico.</p>
+                <a href="mailto:eec.mogi@educacao.sp.gov.br" class="btn" style="background-color: var(--amarelo-destaque); color: var(--roxo-escuro);">Enviar Mensagem</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Equipe de Especialistas em Currículo - Mogi das Cruzes. Desenvolvido para a rede de ensino.
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
